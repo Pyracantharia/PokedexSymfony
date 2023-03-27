@@ -1,0 +1,24 @@
+{% include 'base.html.twig' %}
+<main role="main" class="container">
+<h1>Se connecter</h1>
+<p>
+ {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+<form method="POST">
+  <label for="email">Email</label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+    <button class="btn btn-primary mt-3">Connexion</button>
+</form>
+</p>
+
+</main>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

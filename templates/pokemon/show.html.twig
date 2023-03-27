@@ -1,0 +1,22 @@
+{% include 'base.html.twig' %}
+<main role="main" class="container">
+<h1>voir un pokemon</h1>
+
+<div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/{%- if pokemon.numero <= 9 -%} 00{{ pokemon.numero }}{%- else -%} {%- if pokemon.numero >= 100 -%} {{pokemon.numero}}{%- else -%}0{{pokemon.numero}}{%  endif %}{% endif %}.png"  alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{ pokemon.nom }}</h5>
+    <p class="card-text"><strong>Niveau : </strong>{{ pokemon.level }}</p>
+    <p class="card-text"><strong>Numero : </strong>{{ pokemon.numero }}</p>
+  </div>
+</div>
+
+<a href="{{ path('pokemon_index') }}">Retourner à l'accueil</a>
+
+  </tbody>
+</table>
+
+
+</main>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

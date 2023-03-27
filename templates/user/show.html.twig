@@ -1,0 +1,53 @@
+{% include 'base.html.twig' %}
+<main role="main" class="container">
+<h1>voir un utilisateur</h1>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ user.email }}</h5>
+    <p class="card-text"><strong>id : </strong>{{ user.id }}</p>
+    <p class="card-text"><strong>Roles : 
+    <ul>
+    {% for roles in user.roles  %}
+        <li>{{ roles }}
+    {% endfor %}
+    </ul>
+    </strong></p>
+  </div>
+</div>
+<h2>Ses pokemons</h2>
+<div class="row">
+{% for pokemon in user.pokemon %}
+  <div class="col-md-4">
+    <div class="card mb-4 box-shadow">
+      <img class="card-img-top" src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/{%- if pokemon.numero <= 9 -%} 00{{ pokemon.numero }}{%- else -%} {%- if pokemon.numero >= 100 -%} {{pokemon.numero}}{%- else -%}0{{pokemon.numero}}{%  endif %}{% endif %}.png"  alt="Card image cap">
+      <div class="card-body">
+        <p class="card-title">{{ pokemon.nom }} #{{ pokemon.numero }}</p>
+        <p class="card-text">
+        <!-- {* pokemon.types.nom|default('N/C') *} -->
+       <img src="https://www.serebii.net/pokedex-bw/type/{{ pokemon.types ? pokemon.types.nom }}.gif" />
+        <small class="text-muted">Niveau : {{ pokemon.level }}</small>
+</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group">
+            <a class="btn btn-sm btn-outline-secondary" href="{{ path('pokemon_show', {'id': pokemon.id}) }}">Voir</a>
+            <a class="btn btn-sm btn-outline-secondary" style="margin-right:10px" href="{{ path('pokemon_edit', {'id': pokemon.id}) }}">Editer</a>
+            {{ include('pokemon/_delete.html.twig') }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    {% else %}
+        Aucun pokemon pour lui
+    {% endfor %}
+</div>
+<a href="{{ path('user_index') }}">Retourner à l'accueil</a>
+
+  </tbody>
+</table>
+
+
+</main>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

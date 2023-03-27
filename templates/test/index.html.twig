@@ -1,0 +1,30 @@
+{% include 'base.html.twig' %}
+<main role="main" class="container">
+<h1>Pokemon</h1>
+
+<div class="jumbotron">
+    {% if data is not null %}
+
+      Nom du pokémon :  {{ data.nom }}
+      Type du pokémon :  {{ data.type }}
+      Date d'anniv du pokemon :  {{ data.anniversaire|date('d/m/Y à H:i:s') }}
+        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/{%- if data.numero <= 9 -%} 00{{ data.numero }}{%- else -%} {%- if data.numero >= 100 -%} {{data.numero}}{%- else -%}0{{data.numero}}{%  endif %}{% endif %}.png" />
+    {% endif %}
+</div>
+<p>
+{{ form_start(form) }}
+
+{{form_row(form.nom)}}
+{{form_row(form.type)}}
+{{form_row(form.numero)}}
+{{form_row(form.anniversaire)}}
+{{ form_row(form.submit, { 'label': 'Submit me' }) }}
+
+
+{{ form_end(form) }}
+
+</p>
+
+</main>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

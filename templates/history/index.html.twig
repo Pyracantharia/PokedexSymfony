@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HistoryController!{% endblock %}
+
+{% block body %}
+{% for user in upokemon %}
+   Email : {{ user.email}}<br>
+   <ul>
+     {% for pokemon in user.pokemon %}
+        <li>{{ pokemon.nom }}
+    {% endfor %}
+   </ul>
+  
+{% endfor %}
+{% endblock %}

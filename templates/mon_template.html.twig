@@ -1,0 +1,10 @@
+{% include 'base.html.twig' %}
+<main role="main" class="container">
+<h1>Bonjour {{name}}</h1>
+Tu as {{age}} ans.
+{% if age == 18  %}
+    <h2>Tu es majeur</h2>
+{% else %}
+    <h3>Tu es mineur</h3>
+{% endif %}
+</main>
